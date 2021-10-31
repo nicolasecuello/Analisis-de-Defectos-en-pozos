@@ -20,11 +20,12 @@ e = re-ri
 
 
 df = pd.read_excel('datos.xlsx')
+df2 = df.drop(columns=['Profundidad'])
 
 
-df['Maxima_Prof'] = df.max(axis=1)
-df['Minima_Prof'] = df.min(axis=1)
- 
+df['Maxima_Prof'] = [re     if df2.max(axis=1)[i]>re    else df2.max(axis=1)[i]     for i in range(len(df['Profundidad'])) ]
+df['Minima_Prof'] = [ri     if df2.min(axis=1)[i]<ri    else df2.min(axis=1)[i]     for i in range(len(df['Profundidad'])) ]
+
 df
 
 
